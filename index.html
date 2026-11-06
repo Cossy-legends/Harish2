@@ -17,6 +17,205 @@
         <link href="css/bootstrap-icons.css" rel="stylesheet">
 
         <link href="css/templatemo-kind-heart-charity.css" rel="stylesheet">
+        <style>
+
+        /* Gallery section */
+        .harish-gallery-section {
+            background: #f8f9fa;
+        }
+        .harish-gallery-heading {
+            max-width: 760px;
+            margin: 0 auto 42px;
+        }
+        .harish-gallery-heading h2 {
+            color: #002147;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .harish-gallery-heading p {
+            color: #6c757d;
+            margin-bottom: 0;
+        }
+        .harish-gallery-video-card,
+        .harish-gallery-photo {
+            position: relative;
+            display: block;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            padding: 0;
+            overflow: hidden;
+            border: 0;
+            border-radius: 14px;
+            background: #e9ecef;
+            box-shadow: 0 8px 24px rgba(0, 33, 71, 0.10);
+            cursor: pointer;
+        }
+        .harish-gallery-video-card img,
+        .harish-gallery-photo img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .45s ease;
+        }
+        .harish-gallery-video-card:hover img,
+        .harish-gallery-photo:hover img {
+            transform: scale(1.055);
+        }
+        .harish-gallery-video-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.42));
+        }
+        .harish-gallery-play {
+            position: absolute;
+            z-index: 2;
+            top: 50%;
+            left: 50%;
+            width: 76px;
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translate(-50%, -50%);
+            border: 2px solid rgba(255,255,255,.9);
+            border-radius: 50%;
+            background: rgba(0, 33, 71, .82);
+            color: #fff;
+            font-size: 27px;
+            padding-left: 5px;
+            box-shadow: 0 8px 24px rgba(0,0,0,.25);
+            transition: background .25s ease, transform .25s ease;
+        }
+        .harish-gallery-video-card:hover .harish-gallery-play {
+            background: #002147;
+            transform: translate(-50%, -50%) scale(1.08);
+        }
+        .harish-gallery-video-label {
+            position: absolute;
+            z-index: 2;
+            left: 22px;
+            right: 22px;
+            bottom: 18px;
+            color: #fff;
+            text-align: left;
+            font-weight: 600;
+            letter-spacing: .2px;
+        }
+        .harish-gallery-photo:focus-visible,
+        .harish-gallery-video-card:focus-visible,
+        .harish-gallery-close:focus-visible,
+        .harish-gallery-arrow:focus-visible {
+            outline: 3px solid #e0a526;
+            outline-offset: 3px;
+        }
+        .harish-gallery-photo-count {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            z-index: 1;
+            padding: 5px 10px;
+            border-radius: 30px;
+            color: #fff;
+            background: rgba(0, 33, 71, .78);
+            font-size: 12px;
+            pointer-events: none;
+        }
+        /* Floating media viewer */
+        .harish-media-viewer {
+            position: fixed;
+            z-index: 99999;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 28px;
+            background: rgba(5, 12, 22, .94);
+        }
+        .harish-media-viewer.is-open {
+            display: flex;
+        }
+        .harish-media-viewer-inner {
+            position: relative;
+            width: min(1100px, 100%);
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .harish-media-viewer video {
+            display: block;
+            width: 100%;
+            max-height: 85vh;
+            aspect-ratio: 16 / 9;
+            object-fit: contain;
+            background: #000;
+            border-radius: 10px;
+        }
+        .harish-media-viewer img {
+            display: block;
+            max-width: 100%;
+            max-height: 85vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        .harish-gallery-close {
+            position: absolute;
+            z-index: 3;
+            top: -48px;
+            right: 0;
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(255,255,255,.5);
+            border-radius: 50%;
+            background: rgba(255,255,255,.12);
+            color: #fff;
+            font-size: 25px;
+            line-height: 1;
+            cursor: pointer;
+        }
+        .harish-gallery-arrow {
+            position: fixed;
+            z-index: 3;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 46px;
+            height: 46px;
+            border: 1px solid rgba(255,255,255,.55);
+            border-radius: 50%;
+            background: rgba(255,255,255,.14);
+            color: #fff;
+            font-size: 27px;
+            line-height: 1;
+            cursor: pointer;
+        }
+        .harish-gallery-arrow:hover,
+        .harish-gallery-close:hover {
+            background: rgba(255,255,255,.28);
+        }
+        .harish-gallery-prev { left: 22px; }
+        .harish-gallery-next { right: 22px; }
+        .harish-gallery-viewer-caption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -34px;
+            color: #fff;
+            text-align: center;
+            font-size: 14px;
+        }
+        @media (max-width: 575.98px) {
+            .harish-media-viewer { padding: 14px; }
+            .harish-gallery-play { width: 62px; height: 62px; font-size: 23px; }
+            .harish-gallery-prev { left: 8px; }
+            .harish-gallery-next { right: 8px; }
+            .harish-gallery-arrow { width: 38px; height: 38px; font-size: 22px; }
+            .harish-gallery-close { top: -48px; }
+        }
+        </style>
 <!--
 
 TemplateMo 581 Kind Heart Charity
@@ -45,8 +244,8 @@ https://templatemo.com/tm-581-kind-heart-charity
                         <p class="d-flex mb-0">
                             <i class="bi-envelope me-2"></i>
 
-                            <a href="mailto:info@harishexpo.co.ke">
-                                info@harishexpo.co.ke
+                            <a href="mailto:Harunmugo@gmail.com.com">
+                                Harunrmugo@gmail.com
                             </a>
                         </p>
                     </div>
@@ -55,10 +254,6 @@ https://templatemo.com/tm-581-kind-heart-charity
                         <ul class="social-icon">
                             <li class="social-icon-item">
                                 <a href="https://www.facebook.com/profile.php?id=61576714425159" class="social-icon-link bi-facebook"></a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="https://x.com/HarishLtdke" class="social-icon-link bi-twitter"></a>
                             </li>
 
                             <li class="social-icon-item">
@@ -100,6 +295,9 @@ https://templatemo.com/tm-581-kind-heart-charity
                             <a class="nav-link" href="services.html">Services</a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="#gallery">Gallery</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link click" href="contact.html">Contact Us</a>
                         </li>
@@ -318,6 +516,82 @@ From handling documentation to coordinating international deliveries, our experi
                         </div>
             </section>
 
+
+            <!-- Gallery Section -->
+            <section class="section-padding harish-gallery-section" id="gallery">
+                <div class="container">
+                    <div class="harish-gallery-heading text-center">
+                        <h2>Our Gallery</h2>
+                        <p>Explore moments from our operations, services and commitment to delivering excellence across borders.</p>
+                    </div>
+
+                    <!-- Featured landscape video: square preview, landscape playback -->
+                    <div class="row justify-content-center mb-5">
+                        <div class="col-lg-5 col-md-7 col-11">
+                            <button
+                                type="button"
+                                class="harish-gallery-video-card"
+                                id="harishOpenVideo"
+                                aria-label="Play Harish Exporters company video">
+                                <img src="images/gallery/tm.png" alt="Harish Exporters featured video preview">
+                                <span class="harish-gallery-play" aria-hidden="true">&#9658;</span>
+                                <span class="harish-gallery-video-label">A Closer Look at Harish Exporters</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 25 square gallery photos -->
+                    <div class="row g-4" id="harishGalleryGrid">
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="0" aria-label="View gallery photo 1"><img src="images/gallery/1.jfif" alt="Harish Exporters gallery photo 1" loading="lazy"><span class="harish-gallery-photo-count">01</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="1" aria-label="View gallery photo 2"><img src="images/gallery/2.jfif" alt="Harish Exporters gallery photo 2" loading="lazy"><span class="harish-gallery-photo-count">02</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="2" aria-label="View gallery photo 3"><img src="images/gallery/3.jfif" alt="Harish Exporters gallery photo 3" loading="lazy"><span class="harish-gallery-photo-count">03</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="3" aria-label="View gallery photo 4"><img src="images/gallery/4.jfif" alt="Harish Exporters gallery photo 4" loading="lazy"><span class="harish-gallery-photo-count">04</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="4" aria-label="View gallery photo 5"><img src="images/gallery/5.jfif" alt="Harish Exporters gallery photo 5" loading="lazy"><span class="harish-gallery-photo-count">05</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="5" aria-label="View gallery photo 6"><img src="images/gallery/6.jfif" alt="Harish Exporters gallery photo 6" loading="lazy"><span class="harish-gallery-photo-count">06</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="6" aria-label="View gallery photo 7"><img src="images/gallery/7.jfif" alt="Harish Exporters gallery photo 7" loading="lazy"><span class="harish-gallery-photo-count">07</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="7" aria-label="View gallery photo 8"><img src="images/gallery/8.jfif" alt="Harish Exporters gallery photo 8" loading="lazy"><span class="harish-gallery-photo-count">08</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="8" aria-label="View gallery photo 9"><img src="images/gallery/9.jfif" alt="Harish Exporters gallery photo 9" loading="lazy"><span class="harish-gallery-photo-count">09</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="9" aria-label="View gallery photo 10"><img src="images/gallery/10.jfif" alt="Harish Exporters gallery photo 10" loading="lazy"><span class="harish-gallery-photo-count">10</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="10" aria-label="View gallery photo 11"><img src="images/gallery/11.jfif" alt="Harish Exporters gallery photo 11" loading="lazy"><span class="harish-gallery-photo-count">11</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="11" aria-label="View gallery photo 12"><img src="images/gallery/12.jfif" alt="Harish Exporters gallery photo 12" loading="lazy"><span class="harish-gallery-photo-count">12</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="12" aria-label="View gallery photo 13"><img src="images/gallery/13.jfif" alt="Harish Exporters gallery photo 13" loading="lazy"><span class="harish-gallery-photo-count">13</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="13" aria-label="View gallery photo 14"><img src="images/gallery/14.jfif" alt="Harish Exporters gallery photo 14" loading="lazy"><span class="harish-gallery-photo-count">14</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="14" aria-label="View gallery photo 15"><img src="images/gallery/15.jfif" alt="Harish Exporters gallery photo 15" loading="lazy"><span class="harish-gallery-photo-count">15</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="15" aria-label="View gallery photo 16"><img src="images/gallery/16.jfif" alt="Harish Exporters gallery photo 16" loading="lazy"><span class="harish-gallery-photo-count">16</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="16" aria-label="View gallery photo 17"><img src="images/gallery/17.jfif" alt="Harish Exporters gallery photo 17" loading="lazy"><span class="harish-gallery-photo-count">17</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="17" aria-label="View gallery photo 18"><img src="images/gallery/18.jfif" alt="Harish Exporters gallery photo 18" loading="lazy"><span class="harish-gallery-photo-count">18</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="18" aria-label="View gallery photo 19"><img src="images/gallery/19.jfif" alt="Harish Exporters gallery photo 19" loading="lazy"><span class="harish-gallery-photo-count">19</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="19" aria-label="View gallery photo 20"><img src="images/gallery/20.jfif" alt="Harish Exporters gallery photo 20" loading="lazy"><span class="harish-gallery-photo-count">20</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="20" aria-label="View gallery photo 21"><img src="images/gallery/21.jfif" alt="Harish Exporters gallery photo 21" loading="lazy"><span class="harish-gallery-photo-count">21</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="21" aria-label="View gallery photo 22"><img src="images/gallery/22.jfif" alt="Harish Exporters gallery photo 22" loading="lazy"><span class="harish-gallery-photo-count">22</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="22" aria-label="View gallery photo 23"><img src="images/gallery/23.jfif" alt="Harish Exporters gallery photo 23" loading="lazy"><span class="harish-gallery-photo-count">23</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="23" aria-label="View gallery photo 24"><img src="images/gallery/24.jfif" alt="Harish Exporters gallery photo 24" loading="lazy"><span class="harish-gallery-photo-count">24</span></button></div>
+                        <div class="col-lg-3 col-md-4 col-6"><button class="harish-gallery-photo" type="button" data-gallery-index="24" aria-label="View gallery photo 25"><img src="images/gallery/25.jfif" alt="Harish Exporters gallery photo 25" loading="lazy"><span class="harish-gallery-photo-count">25</span></button></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Floating video and photo viewer -->
+            <div class="harish-media-viewer" id="harishVideoViewer" role="dialog" aria-modal="true" aria-label="Company video viewer">
+                <div class="harish-media-viewer-inner">
+                    <button type="button" class="harish-gallery-close" id="harishCloseVideo" aria-label="Close video">&times;</button>
+                    <video id="harishGalleryVideo" controls playsinline preload="metadata">
+                        <source src="images/gallery/video1.mp4" type="video/mp4">
+                        Your browser does not support the video element.
+                    </video>
+                </div>
+            </div>
+
+            <div class="harish-media-viewer" id="harishPhotoViewer" role="dialog" aria-modal="true" aria-label="Gallery photo viewer">
+                <button type="button" class="harish-gallery-arrow harish-gallery-prev" id="harishPhotoPrev" aria-label="Previous photo">&#8249;</button>
+                <div class="harish-media-viewer-inner">
+                    <button type="button" class="harish-gallery-close" id="harishClosePhoto" aria-label="Close photo viewer">&times;</button>
+                    <img id="harishLargePhoto" src="" alt="Expanded gallery photo">
+                    <div class="harish-gallery-viewer-caption" id="harishPhotoCaption"></div>
+                </div>
+                <button type="button" class="harish-gallery-arrow harish-gallery-next" id="harishPhotoNext" aria-label="Next photo">&#8250;</button>
+            </div>
+
 <!--happy clients part starts here-->
             <section class="testimonial-section section-padding section-bg">
                 <div class="container">
@@ -416,24 +690,16 @@ From handling documentation to coordinating international deliveries, our experi
                                     <p class="d-flex mb-2">
                                         <i class="bi-telephone me-2"></i>
 
-                                        <a href="tel:+254711802143">
+                                        <a href="tel: 120-240-9600">
                                             +254711802143
-                                        </a>
-                                    </p>
-
-                                    <p class="d-flex mb-2">
-                                        <i class="bi-telephone me-2"></i>
-
-                                        <a href="tel:0782802145">
-                                            0782802145
                                         </a>
                                     </p>
 
                                     <p class="d-flex">
                                         <i class="bi-envelope me-2"></i>
 
-                                        <a href="mailto:info@harishexpo.co.ke">
-                                            info@harishexpo.co.ke
+                                        <a href="mailto:info@yourgmail.com">
+                                            Harunrmugo@gmail.com
                                         </a>
                                     </p>
 
@@ -451,7 +717,7 @@ From handling documentation to coordinating international deliveries, our experi
                             <h2>Contact form</h2>
 
                             <p class="mb-4">Message will be sent to
-                                <a href="#">info@harishexpo.co.ke</a>
+                                <a href="#">Harunmugo@gmail.com</a>
                             </p>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-12">
@@ -463,7 +729,7 @@ From handling documentation to coordinating international deliveries, our experi
                                 </div>
                             </div>
 
-                            <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Your Email" required>
+                            <input type="email" name="email" id="email" pattern="[^ @]*@[^   @]*" class="form-control" placeholder="Your Email" required>
 
                             <textarea name="message" rows="5" class="form-control" id="message" placeholder="How can we help you?"></textarea>
 
@@ -527,19 +793,11 @@ From handling documentation to coordinating international deliveries, our experi
                             </a>
                         </p>
 
-                        <p class="text-white d-flex mb-2">
-                            <i class="bi-telephone me-2"></i>
-
-                            <a href="tel:0782802145" class="site-footer-link">
-                                0782802145
-                            </a>
-                        </p>
-
                         <p class="text-white d-flex">
                             <i class="bi-envelope me-2"></i>
 
-                            <a href="mailto:info@harishexpo.co.ke" class="site-footer-link">
-                                info@harishexpo.co.ke
+                            <a href="mailto:Harunrmugo@gmail.com" class="site-footer-link">
+                                Harunrmugo@gmail.com
                             </a>
                         </p>
 
@@ -572,10 +830,6 @@ From handling documentation to coordinating international deliveries, our experi
                                     <a href="https://www.facebook.com/profile.php?id=61576714425159" class="social-icon-link bi-facebook"></a>
                                 </li>
 
-                            <li class="social-icon-item">
-                                <a href="https://x.com/HarishLtdke" class="social-icon-link bi-twitter"></a>
-                            </li>
-
                                  <li class="social-icon-item">
                                      <a href="https://wa.me/254711802143" class="social-icon-link bi-whatsapp" target="_blank"></a>
                                   </li>
@@ -595,9 +849,104 @@ From handling documentation to coordinating international deliveries, our experi
         <script src="js/counter.js"></script>
         <script src="js/custom.js"></script>
 
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const videoViewer = document.getElementById('harishVideoViewer');
+                const video = document.getElementById('harishGalleryVideo');
+                const openVideoButton = document.getElementById('harishOpenVideo');
+                const closeVideoButton = document.getElementById('harishCloseVideo');
+
+                const photoViewer = document.getElementById('harishPhotoViewer');
+                const largePhoto = document.getElementById('harishLargePhoto');
+                const photoCaption = document.getElementById('harishPhotoCaption');
+                const photoButtons = Array.from(document.querySelectorAll('#harishGalleryGrid .harish-gallery-photo'));
+                const previousPhotoButton = document.getElementById('harishPhotoPrev');
+                const nextPhotoButton = document.getElementById('harishPhotoNext');
+                const closePhotoButton = document.getElementById('harishClosePhoto');
+                let currentPhotoIndex = 0;
+
+                function openViewer(viewer) {
+                    viewer.classList.add('is-open');
+                    document.body.style.overflow = 'hidden';
+                }
+
+                function closeViewer(viewer) {
+                    viewer.classList.remove('is-open');
+                    if (!videoViewer.classList.contains('is-open') && !photoViewer.classList.contains('is-open')) {
+                        document.body.style.overflow = '';
+                    }
+                }
+
+                function openVideo() {
+                    openViewer(videoViewer);
+                    const playAttempt = video.play();
+                    if (playAttempt && typeof playAttempt.catch === 'function') {
+                        playAttempt.catch(function () {
+                            // If autoplay is blocked, the visitor can use the visible video controls.
+                        });
+                    }
+                }
+
+                function closeVideo() {
+                    video.pause();
+                    video.currentTime = 0;
+                    closeViewer(videoViewer);
+                }
+
+                function showPhoto(index) {
+                    currentPhotoIndex = (index + photoButtons.length) % photoButtons.length;
+                    const image = photoButtons[currentPhotoIndex].querySelector('img');
+                    largePhoto.src = image.src;
+                    largePhoto.alt = image.alt;
+                    photoCaption.textContent = 'Photo ' + (currentPhotoIndex + 1) + ' of ' + photoButtons.length;
+                }
+
+                function openPhoto(index) {
+                    showPhoto(index);
+                    openViewer(photoViewer);
+                }
+
+                function closePhoto() {
+                    closeViewer(photoViewer);
+                    largePhoto.src = '';
+                }
+
+                openVideoButton.addEventListener('click', openVideo);
+                closeVideoButton.addEventListener('click', closeVideo);
+                closePhotoButton.addEventListener('click', closePhoto);
+                previousPhotoButton.addEventListener('click', function () {
+                    showPhoto(currentPhotoIndex - 1);
+                });
+                nextPhotoButton.addEventListener('click', function () {
+                    showPhoto(currentPhotoIndex + 1);
+                });
+
+                photoButtons.forEach(function (button, index) {
+                    button.addEventListener('click', function () {
+                        openPhoto(index);
+                    });
+                });
+
+                [videoViewer, photoViewer].forEach(function (viewer) {
+                    viewer.addEventListener('click', function (event) {
+                        if (event.target === viewer) {
+                            if (viewer === videoViewer) closeVideo();
+                            else closePhoto();
+                        }
+                    });
+                });
+
+                document.addEventListener('keydown', function (event) {
+                    if (videoViewer.classList.contains('is-open') && event.key === 'Escape') {
+                        closeVideo();
+                    } else if (photoViewer.classList.contains('is-open')) {
+                        if (event.key === 'Escape') closePhoto();
+                        if (event.key === 'ArrowLeft') showPhoto(currentPhotoIndex - 1);
+                        if (event.key === 'ArrowRight') showPhoto(currentPhotoIndex + 1);
+                    }
+                });
+            });
+        </script>
+
     </body>
-
 </html>
-
-
-
